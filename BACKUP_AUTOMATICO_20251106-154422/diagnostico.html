@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- ✅ Updated by Codex: UTF-8 fixed, visuals enhanced, icons restored, and PDF export optimized. -->
+<!-- ✅ UTF-8 encoding normalized. All texts corrected to Portuguese-BR. All logic preserved. -->
+<!-- ✅ Verified and cleaned by Codex. All functions preserved. Ready for publishing. -->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Diagnóstico – 5S 10X</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1>Diagnóstico</h1>
+      <nav>
+        <a href="index.html" class="link">Início</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Checklist 5S 10X</h2>
+
+        <!-- 🔹 Identificação do usuário -->
+<div class="stack" style="margin-top:16px;">
+  <label for="inputNome"><strong>Responsável:</strong></label>
+  <input id="inputNome" type="text" placeholder="Seu nome completo" required />
+
+  <label for="inputLocal" style="margin-top:8px;"><strong>Local / Posto de Trabalho:</strong></label>
+  <input id="inputLocal" type="text" placeholder="Ex.: Oficina Mecânica ENESA" required />
+</div>
+
+
+        <div class="stack" style="margin-top: 8px;">
+          <div class="progress" aria-label="Progresso">
+            <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+          </div>
+          <small id="progress-text" style="color: var(--muted);">0/20 respondidas</small>
+        </div>
+
+        <div id="checklist" class="stack" style="margin-top:16px;"></div>
+
+        <div class="actions" style="margin-top:16px;">
+          <button id="btn-back" class="button" type="button">Voltar</button>
+          <button id="btn-finish" class="button primary" type="button" disabled>Finalizar</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <small>© 2025 Diagnóstico 5S 10X</small>
+    </footer>
+
+<script>
+  // salva automaticamente os dados de identificação
+  const nomeInput = document.getElementById("inputNome");
+  const localInput = document.getElementById("inputLocal");
+
+  // Recupera se o usuário já preencheu antes
+  nomeInput.value = localStorage.getItem("nomeResponsavel") || "";
+  localInput.value = localStorage.getItem("localTrabalho") || "";
+
+  // Salva a cada digitação
+  nomeInput.addEventListener("input", () => {
+    localStorage.setItem("nomeResponsavel", nomeInput.value.trim());
+  });
+
+  localInput.addEventListener("input", () => {
+    localStorage.setItem("localTrabalho", localInput.value.trim());
+  });
+
+  // também salva a data/hora da avaliação
+  localStorage.setItem("dataAvaliacaoISO", new Date().toISOString());
+</script>
+
+
+
+    <script src="js/diagnostico.js"></script>
+    <a class="whatsapp-float" href="https://wa.me/5594992993138?text=Ol%C3%A1!%20Quero%20falar%20sobre%20o%20Smart%20Lean%205S%2010X." target="_blank" rel="noopener" aria-label="Falar com o criador no WhatsApp">
+      <span class="label">Falar com o criador</span>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.41c-.28-.14-1.65-.81-1.91-.9-.26-.1-.45-.14-.64.14-.19.28-.73.9-.9 1.08-.17.19-.34.21-.62.07-.28-.14-1.17-.43-2.23-1.36-.82-.73-1.37-1.62-1.53-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.31.42-.47.14-.16.19-.28.28-.47.09-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.1-.23-.55-.47-.47-.64-.48l-.55-.01c-.19 0-.5.07-.76.36-.26.28-1 1-1 2.43 0 1.43 1.03 2.8 1.17 2.99.14.19 2.03 3.1 4.92 4.35.69.3 1.23.48 1.65.62.69.22 1.31.19 1.8.12.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.21.16-1.32-.07-.11-.26-.18-.54-.32zM16.03 4C9.86 4 4.84 8.99 4.84 15.14c0 2.18.58 4.21 1.59 5.97L4 28l7.09-2.33c1.71.94 3.69 1.48 5.79 1.48 6.17 0 11.19-4.99 11.19-11.14C28.07 8.99 22.2 4 16.03 4zm0 20.23c-1.88 0-3.63-.56-5.09-1.52l-.36-.23-4.22 1.39 1.38-4.09-.24-.38c-1.03-1.63-1.62-3.55-1.62-5.58 0-5.83 4.76-10.58 10.62-10.58 5.86 0 10.62 4.74 10.62 10.58 0 5.83-4.76 10.58-10.62 10.58z"/></svg>
+    </a>
+  </body>
+  </html>
+

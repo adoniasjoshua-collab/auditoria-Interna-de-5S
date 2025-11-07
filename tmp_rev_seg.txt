@@ -1,0 +1,35 @@
+function buildPdfDoc(meta, overall, sensesArr) {
+    const perfil = safeReadLocal('perfil5S') || {};
+    const { jsPDF } = window.jspdf || {};
+    if (!jsPDF) { throw new Error('jsPDF não carregado'); }
+    const doc = new jsPDF('p','pt','a4');
+    // Cabecalho fixo com marca
+    const brand = 'Zadoni Criacoes - WhatsApp: 94992993138';
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const topBand = 24;
+    try { doc.setFillColor(11,18,32); doc.rect(0, 0, pageWidth, topBand, 'F'); doc.setTextColor(229,231,235); doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.text(brand, pageWidth/2, 16, { align: 'center', baseline: 'middle' }); } catch {}
+    let y = topBand + 20;
+    doc.setFont('helvetica','bold'); doc.setFontSize(16);
+    doc.text('Smart Lean 5S 10X — Resultado', 40, y); y += 18;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    doc.text(`Gerado em ${new Date().toLocaleString('pt-BR')}`, 40, y); y += 14;
+    if (perfil.name || perfil.email) {
+      doc.text(`${perfil.name ? 'Nome: ' + perfil.name : ''}${perfil.email ? '  E-mail: ' + perfil.email : ''}`, 40, y); y += 18;
+    }
+    doc.setFont('helvetica','bold'); doc.setFontSize(12);
+    const overallLine = `Nota Geral: ${overall.score!=null?formatOne(overall.score):'-'}  (${overall.level} — ${overall.label})`;
+    doc.text(overallLine, 40, y); y += 14;
+    if (overall.desc) { doc.setFont('helvetica','normal'); wrapText(doc, overall.desc, 40, y, 515); y += 28; }
+    doc.setFont('helvetica','bold'); doc.text('Desempenho por Senso', 40, y); y += 14;
+    doc.setFont('helvetica','bold'); doc.text('Senso', 40, y); doc.text('Média', 260, y); doc.text('Nível', 340, y); y += 10;
+    doc.setFont('helvetica','normal');
+    (sensesArr||[]).forEach(s => {
+      const m = getMaturityLevel(s.avg);
+      const val = (typeof s.avg==='number') ? formatOne(s.avg) : '-';
+      doc.text(String(s.title||''), 40, y);
+      doc.text(val, 260, y);
+      doc.text(`${m.level} - ${m.label}`, 340, y);
+      y += 14;
+    });
+      // Resumo Inteligente (acoes ampliadas)\n    y += 10; doc.setFont('helvetica','bold'); doc.text('Resumo Inteligente', 40, y); y += 14;\n    (sensesArr||[]).forEach(function(s){\n      var m = getMaturityLevel(s.avg);\n      var title = String(s.title||'Senso');\n      doc.setFont('helvetica','bold'); doc.text(title + '  ' + (typeof s.avg==='number'?formatOne(s.avg):'-') + '  (' + m.label + ')', 40, y); y += 12;\n      doc.setFont('helvetica','normal');\n      var acts = suggestionsForSense(s.key || s.title).concat(extraActionsForSense(s.key || s.title));\n      acts.slice(0,6).forEach(function(a){ wrapText(doc, '\u2022 ' + a, 48, y, 520); y += 12; });\n      y += 6;\n    });\n    return doc;\n  }\n// Utilitário: converte cor hex para rgba com alfa
+  

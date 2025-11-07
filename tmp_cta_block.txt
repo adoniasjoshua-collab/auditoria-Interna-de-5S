@@ -1,0 +1,94 @@
+/* ===== CTA Footer (Resultados) ===== */
+.cta-footer {
+  margin-top: 24px;
+  background: linear-gradient(180deg, rgba(0,76,115,0.85) 0%, rgba(0,174,239,0.45) 100%);
+  border-top: 1px solid #223047;
+}
+.cta-footer .cta-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 36px) clamp(12px, 3vw, 24px);
+  text-align: center;
+}
+.cta-footer h2 { font-size: clamp(1.25rem, 1.4vw + 1rem, 1.8rem); margin: 0 0 10px; }
+.cta-footer p { color: #e5e7eb; margin: 6px 0 12px; }
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  background: #F9A825;
+  color: #0b1220;
+  margin: 6px;
+  border: 1px solid transparent;
+  min-height: 44px;
+}
+.cta-button.secondary { background: transparent; color: #ffffff; border-color: #e5e7eb; }
+.cta-button:hover { filter: brightness(1.05); box-shadow: 0 8px 18px rgba(0,0,0,0.3); transform: translateY(-1px); }
+
+/* ===== CTA Footer Override (Requested Style) ===== */
+.cta-footer {
+  background: linear-gradient(135deg, #002F4B, #004C73);
+  color: #ffffff;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-top: 2rem;
+  animation: fadeInUp 1s ease-in-out;
+  border-top: 3px solid #F9A825;
+}
+
+.cta-footer .cta-content {
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.cta-footer h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #FFD54F;
+}
+
+.cta-footer p {
+  margin: 0.8rem 0;
+  font-size: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #F9A825;
+  color: #002F4B;
+  padding: 0.8rem 1.6rem;
+  margin: 0.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #FFD54F;
+  transform: scale(1.05);
+}
+
+.cta-button.secondary {
+  background-color: #2196F3;
+  color: #ffffff;
+}
+
+.cta-button.secondary:hover {
+  background-color: #42A5F5;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .cta-footer h2 { font-size: 1.4rem; }
+  .cta-button { width: 90%; margin: 0.4rem 0; }
+}
+
