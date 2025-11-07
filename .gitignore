@@ -1,0 +1,23 @@
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Dependências e builds comuns
+node_modules/
+dist/
+build/
+
+# Segredos
+.env
+
+# Backups e temporários deste projeto
+BACKUP_AUTOMATICO_*/
+tmp_*.txt
+*.zip
+
+# Logs
+logs/
+*.log
+debug.log
+
